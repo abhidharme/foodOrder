@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles css/indexname.css">
+</head>
+<body>
+    <div id="mainbox">
+    </div>
+    <div id="inpdata"></div>
+</body>
+</html>
+
+<script type="module">
+
+    import navbar from "./components/indexname.js";
+    
+    let show_data = document.getElementById("mainbox");
+    
+    show_data.innerHTML = navbar()
+    
+
+    import {getData , appenddata} from "./script/function.js";
+
+    let data_div = document.getElementById("inpdata");
+
+let response =  getData("https://www.themealdb.com/api/json/v1/1/filter.php?i=");
+console.log(response);
+response
+.then((res) => {
+    appenddata(res,data_div);
+    console.log(res);
+})
+
+.catch((err) => {
+    console.log(err);
+})
+
+
+
+
+
+
+
+
+
+    </script>

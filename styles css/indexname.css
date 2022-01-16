@@ -1,0 +1,59 @@
+#box{
+    border: 1px solid black;
+    width: 60%;
+    margin: auto;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+#mainbox{
+    display: flex;
+    align-items: center;
+    background-color: green;
+}
+#search{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+input{
+    width: 300px;
+    height: 25px;
+}
+body{
+    background-color:#fcfbcf ;
+}
+#id1{
+    border-radius: 50%;
+    margin-left: 100px;
+}
+#inpdata{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+}
+#inpdatar{
+    
+    margin-top: 30px;
+    margin-left: 30px;
+    display: flex;
+    gap:10px
+}
+#div1{
+    width: 300px;
+    height: 400px;
+}
+#img1{
+    height: 70%;
+    width: 100%;
+}
+#div2{
+    border: 1px solid transparent;
+    width: 400px;
+}
+#p_img{
+    width: 290;
+    background-color: white;
+    max-height: 200px;
+    overflow: auto;
+}

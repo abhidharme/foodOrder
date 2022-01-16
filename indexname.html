@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link rel="stylesheet" href="./styles css/indexname.css">
+    <style>
+        #div5{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        grid-gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainbox">
+</div>
+
+<div id="div5"></div>
+</body>
+</html>
+
+<script type="module">
+
+import navbar from "./components/indexname.js";
+
+
+
+let show_data = document.getElementById("mainbox");
+
+show_data.innerHTML = navbar()
+
+
+let input = document.getElementById("dishesh");
+
+input.addEventListener("input" , serchfood)
+
+
+ async function serchfood(){
+     
+    try{
+      let query = input.value;
+     // console.log(query)
+
+      if(query.length <=2){
+    return false;
+         }      
+
+        let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+        let data = await res.json();
+         var X = data.meals;
+         putdata(X);
+        console.log(data);
+    }
+
+   catch (err) {
+console.log("err",err);
+   }
+
+}
+
+var div11 =     document.getElementById("p_img");
+function putdata(arr){
+if(arr == undefined){ 
+    return false;
+}
+div11.innerHTML = "";
+        arr.map(function(elem,index){
+
+      
+
+        
+        
+            var div2 = document.createElement("div");
+             //div2.setAttribute("id" , "div2")
+
+            var A = document.createElement("p");
+            A.textContent = elem.strMeal;            
+            div2.append(A);
+            console.log(div2);
+
+            div2.addEventListener("click" , function(){
+                showvalue(elem,index);
+            });
+            
+        
+            div11.append(div2);
+        });
+    }
+
+
+
+
+
+
+    import {getData , appenddata} from "./script/function.js";
+
+let data_div = document.getElementById("div5");
+
+let response =  getData("https://www.themealdb.com/api/json/v1/1/filter.php?i=");
+console.log(response);
+response
+.then((res) => {
+appenddata(res,data_div);
+console.log(res);
+})
+
+.catch((err) => {
+console.log(err);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function showvalue(elem,index){
+        document.getElementById("div5").innerHTML = "";
+        var div4 = document.createElement("div");
+             div4.setAttribute("id" , "div4")
+
+             var b = document.createElement("h4");
+            b.textContent = `Dish Name :- ${elem.strMeal}`;
+
+
+            var image1 = document.createElement("img");
+            image1.src = elem.strMealThumb;
+
+            image1.setAttribute("id" , "img1");
+            div4.append(image1,b);
+
+
+
+            document.getElementById("div5").append(div4);
+
+    }
+
+</script>
